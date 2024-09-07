@@ -1,5 +1,5 @@
 import "./bootstrap";
-import {hideLoading, loadingScreen} from "@/apps/utils/helper.js";
+import {formatRupiah, hideLoading, loadingScreen} from "@/apps/utils/helper.js";
 export function csrfToken() {
     let csrfToken = document
         .querySelector('meta[name="csrf-token"]')
@@ -116,6 +116,10 @@ export function removeAlert(count) {
         $(".alert-container").empty();
     }
 }
+
+$(document).on('keyup', '.convert-currency', function () {
+    $(this).val(formatRupiah(this.value, "Rp ", false));
+})
 
 $("body").append(loadingScreen());
 hideLoading(1000);
